@@ -1,6 +1,6 @@
 # Azure AI Foundry Agent Service: Deep Research tool
 
-This repo demonstrates how to use the **Azure AI Foundry Agent Service** with a Deep Research tool, powred by _o3-deep-research_ AI model. You learn how to to integrate a web-based research capability into your Ai agentic solutions.
+This repo demonstrates how to use the **Azure AI Foundry Agent Service** with a Deep Research tool, powred by _o3-deep-research_ AI model. You learn how to to integrate a web-based research capability into your AI agentic solutions.
 
 > [!NOTE]
 > For detailed information about the Azure AI Foundry Agent Service's Deep Research tool, refer to the official [Azure AI Foundry documentation](https://learn.microsoft.com/en-us/azure/ai-foundry/agents/how-to/tools/deep-research).
