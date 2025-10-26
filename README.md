@@ -16,7 +16,7 @@ This repo demonstrates how to use the **Azure AI Foundry Agent Service** with a 
 To run the provided Jupyter notebook, you'll need to set up your Azure AI Foundry environment and install the required Python packages.
 
 ### 1.1 Prerequisites
-You need an **Azure AI Foundry** project with a deployment of `o3-deep-research` AI model.
+You need an **Azure AI Foundry** project with a deployment of `o3-deep-research` and `GPT-4o` AI models.
 
 ### 1.2 Authentication
 The demo uses **Microsoft Entra ID** authentication via `DefaultAzureCredential` from the `azure.identity` package. To enable this, ensure you are authenticated through the Azure CLI (`az login`), by setting up environment variables for a service principal, or by using a managed identity in an Azure environment.
@@ -27,7 +27,8 @@ Configure the following environment variables with your project details:
 | Environment Variable             | Description                                           |
 | :------------------------------- | :---------------------------------------------------- |
 | `AZURE_FOUNDRY_PROJECT_ENDPOINT` | The endpoint URL for your Azure AI Foundry project.   |
-| `AZURE_FOUNDRY_GPT_MODEL`        | The name of your o3-deep-research model's deployment. |
+| `AZURE_FOUNDRY_O3DR_DEPLOYMENT`  | The name of your _o3-deep-research_ deployment.       |
+| `AZURE_FOUNDRY_GPT40_DEPLOYMENT` | The name of your _GPT-4o_ deployment.                 |
 
 ### 1.4 Required Libraries
 Install the necessary Python packages using pip.
