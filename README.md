@@ -9,8 +9,8 @@ This repo demonstrates how to use the **Azure AI Foundry Agent Service** with a 
 
 ## 📑 Table of Contents:
 - [Part 1: Configuring the Environment](#part-1-configuring-the-environment)
-- [Part 2: ]()
-- [Part 3: ]()
+- [Part 2: Agent and Tool Configuration](#part-2-agent-and-tool-configuration)
+- [Part 3: Running the Agent and Generating Research]()
 
 ## Part 1: Configuring the Environment
 To run the provided Jupyter notebook, you'll need to set up your Azure AI Foundry environment and install the required Python packages.
@@ -70,3 +70,44 @@ agent = agents_client.create_agent(
 ```
 
 ***
+
+## Part 3: Running the Agent and Generating Research
+This section demonstrates how the agent executes a multi-step research task and generates a comprehensive, cited report based.
+
+### 3.1 The Agent Execution Loop
+The agent is invoked by creating a conversation thread, sending the user message, and starting a "run." The Deep Research tool executes an extended, iterative process:
+
+1. The orchestrator model calls the _Deep Research tool_ with the query.
+2. The dedicated research model (_o3-deep-research_) searches with Bing, analyses multiple sources, adjusts its search queries and produces the findings.
+3. The agent emits _Chain-of-Thought_ (COT) summaries to log its progress, showing the search and analysis steps.
+
+``` Python
+run = agents_client.runs.create(thread_id=thread.id, agent_id=agent.id)
+last_message_id = None
+
+while run.status in ["queued", "in_progress", "requires_action"]:
+    time.sleep(1)
+    run = agents_client.runs.get(thread_id=thread.id, run_id=run.id)
+
+    ...
+
+    last_message_id = fetch_and_print_new_agent_response(
+        thread_id = thread.id,
+        agents_client = agents_client,
+        last_message_id = last_message_id,
+    )
+    print(f"Run status: {run.status}")
+```
+
+### 3.2 The Final Research Report
+Once the deep research is complete, the agent generates a polished final message containing the _research summary_, complete with inline citations to the sources found via Bing. This final output message is retrieved and written to a Markdown file (**research_summary.md**).
+
+``` Python
+final_message = agents_client.messages.get_last_message_by_role(
+    thread_id = thread.id,
+    role = MessageRole.AGENT
+)
+
+if final_message:
+    create_research_summary(final_message)
+```
