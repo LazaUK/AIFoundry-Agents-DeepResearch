@@ -41,3 +41,32 @@ pip install azure-ai-agents azure-identity
 ***
 
 ## Part 2: Agent and Tool Configuration
+This section explains how to define the specialised Deep Research tool and configure your AI agent to utilise it for Web-based research.
+
+### 2.1 Deep Research Tool
+The **Deep Research tool** uses a dedicated research model (_o3-deep-research_) and requires a Bing Search grounding connection to retrieve live content from the Internet. It's initialised using the _DeepResearchTool_ class.
+
+The key configuration properties are:
+- _bing_grounding_connection_id_: The ID of your Bing Search connection,
+- _deep_research_model_: The deployment name of the o3-deep-research model.
+
+``` Python
+deep_research_tool = DeepResearchTool(
+    bing_grounding_connection_id = BING_SEARCH_CONN_ID,
+    deep_research_model = O3DR_DEPLOYMENT,
+)
+```
+
+### 2.2 Agent Creation
+The agent uses a large language model (like GPT-4o) to serve as the orchestrator. This orchestrator model decides when to call the Deep Research tool, interprets the resulting research data and generates the final, user-friendly report.
+
+``` Python
+agent = agents_client.create_agent(
+    model = GPT4O_DEPLOYMENT,
+    name = "deep-research-agent",
+    instructions = "You are a helpful Agent that assists in researching scientific topics.",
+    tools = deep_research_tool.definitions
+)
+```
+
+***
