@@ -10,7 +10,7 @@ This repo demonstrates how to use the **Azure AI Foundry Agent Service** with a 
 ## 📑 Table of Contents:
 - [Part 1: Configuring the Environment](#part-1-configuring-the-environment)
 - [Part 2: Agent and Tool Configuration](#part-2-agent-and-tool-configuration)
-- [Part 3: Running the Agent and Generating Research]()
+- [Part 3: Running the Agent and Generating Research](#part-3-running-the-agent-and-generating-research)
 
 ## Part 1: Configuring the Environment
 To run the provided Jupyter notebook, you'll need to set up your Azure AI Foundry environment and install the required Python packages.
