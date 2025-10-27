@@ -24,11 +24,12 @@ The demo uses **Microsoft Entra ID** authentication via `DefaultAzureCredential`
 ### 1.3 Environment Variables
 Configure the following environment variables with your project details:
 
-| Environment Variable             | Description                                           |
-| :------------------------------- | :---------------------------------------------------- |
-| `AZURE_FOUNDRY_PROJECT_ENDPOINT` | The endpoint URL for your Azure AI Foundry project.   |
-| `AZURE_FOUNDRY_O3DR_DEPLOYMENT`  | The name of your _o3-deep-research_ deployment.       |
-| `AZURE_FOUNDRY_GPT40_DEPLOYMENT` | The name of your _GPT-4o_ deployment.                 |
+| Environment Variable                  | Description                                           |
+| :------------------------------------ | :---------------------------------------------------- |
+| `AZURE_FOUNDRY_PROJECT_ENDPOINT`      | The endpoint URL for your Azure AI Foundry project.   |
+| `AZURE_FOUNDRY_BINGSEARCH_CONNECTION` | The connection ID of Grounding with Bing Search.      |
+| `AZURE_FOUNDRY_O3DR_DEPLOYMENT`       | The name of your _o3-deep-research_ deployment.       |
+| `AZURE_FOUNDRY_GPT40_DEPLOYMENT`      | The name of your _GPT-4o_ deployment.                 |
 
 ### 1.4 Required Libraries
 Install the necessary Python packages using pip.
